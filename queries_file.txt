@@ -1,0 +1,40 @@
+                        **** Query 1 ****
+
+SELECT MediaType.Name , count(Track.MediaTypeId) as Total
+FROM Track
+JOIN MediaType on  Track.MediaTypeId = MediaType.MediaTypeId
+GROUP by MediaType.Name
+ORDER by total
+LIMIT 5;
+
+=============================================================================
+                        **** Query 2 ****
+
+SELECT (Customer.FirstName || " " || Customer.LastName) as CustName  ,
+        sum(Invoice.total) AS Total
+FROM Invoice
+INNER JOIN Customer on Invoice.CustomerId = Customer.CustomerId
+GROUP by CustName
+ORDER by Total DESC
+LIMIT 10;
+
+==============================================================================
+                       **** Query 3 ****
+
+SELECT Artist.Name , count(Album.ArtistId) "Number of Album"
+FROM Album
+JOIN Artist on Artist.ArtistId = Album.ArtistId
+GROUP by Artist.Name
+ORDER by "Number of Album" DESC
+LIMIT 10;
+
+==================================================================================
+                      **** Query 4 ****
+
+
+SELECT (Employee.FirstName || " " || Employee.LastName) as EmployeeName  ,
+        count ( Customer.CustomerId) as " Num of Customer "
+FROM Employee
+JOIN Customer  on Employee.EmployeeId = Customer.SupportRepId
+GROUP by EmployeeName
+LIMIT 3;
